@@ -32,6 +32,15 @@ Register a Username and Password.
 	<tr>
 	<td>Password</td><td><input type="text" name="password"></td>
 	</tr>
+	<tr>
+	<td>
+		<select name="user-type" size=1>
+			<option value="admin">Admin</option>
+			<option value="csupport">Customer Support</option>
+			<option value="customer">Customer</option>
+		</select>
+	</td>
+	</tr>
 	</table>
 	<br>
 	<input type="submit" value="submit">

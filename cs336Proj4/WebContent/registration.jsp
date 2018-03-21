@@ -21,6 +21,7 @@
 			//Get parameters from the HTML form at the index?.jsp
 			String user = request.getParameter("username");
 			String pass = request.getParameter("password");
+			String type = request.getParameter("user-type");
 			
 			//Make an insert statement for the Sells table:
 			String insert = "INSERT INTO Auction_Site.Account(username, pass)"
@@ -34,7 +35,26 @@
 			
 			//Run the query against the DB
 			ps.executeUpdate();
-
+			
+			if(type.equals("customer")){
+				
+				insert = "INSERT INTO Auction_Site.End_User(username)"
+						+ "VALUES (?);";		
+				ps = con.prepareStatement(insert);
+				ps.setString(1, user);
+						
+			}else{
+			
+				insert = "INSERT INTO Auction_Site.Admin(username, type)"
+						+ "VALUES (?, ?);";
+				ps = con.prepareStatement(insert);
+				ps.setString(1, user);
+				ps.setString(2, type);
+				
+			}
+			
+			ps.executeUpdate();
+			
 			//close the connection.
 			db.closeConnection(con);
 			
