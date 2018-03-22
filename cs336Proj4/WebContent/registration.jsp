@@ -17,7 +17,6 @@
 			//Get the database connection
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();		
-
 			//Get parameters from the HTML form at the index?.jsp
 			String user = request.getParameter("username");
 			String pass = request.getParameter("password");
@@ -28,7 +27,6 @@
 					+ "VALUES (?, ?);";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
-
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
 			ps.setString(1, user);
 			ps.setString(2, pass);
@@ -62,7 +60,7 @@
 			
 		} catch (Exception ex) {
 			out.print(ex);
-			out.print("<br/> insert failed"); 
+			out.print("<br/><br/> insert failed"); 
 		}
 	%>
 
