@@ -29,6 +29,7 @@
 			<br><br>
 			<%
 		}
+		db.closeConnection(con);
 	%>
 </body>
 </html>
